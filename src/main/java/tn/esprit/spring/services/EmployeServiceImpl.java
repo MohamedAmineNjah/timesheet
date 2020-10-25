@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import tn.esprit.spring.repository.TimesheetRepository;
 
 @Service
 public class EmployeServiceImpl implements IEmployeService {
+	private static final Logger l = Logger.getLogger(EmployeServiceImpl.class);
 
 	@Autowired
 	EmployeRepository employeRepository;
@@ -33,17 +35,20 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public Employe authenticate(String login, String password) {
+		l.info("authetication loading...");
 		return employeRepository.getEmployeByEmailAndPassword(login, password);
 	}
 
 	@Override
 	public int addOrUpdateEmploye(Employe employe) {
+		l.info("addOrUpdateEmploye loading...");
 		employeRepository.save(employe);
 		return employe.getId();
 	}
 
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
+		l.info("mettreAjourEmailByEmployeId loading...");
 		Employe employe = employeRepository.findById(employeId).get();
 		employe.setEmail(email);
 		employeRepository.save(employe);
@@ -52,6 +57,8 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Transactional	
 	public void affecterEmployeADepartement(int employeId, int depId) {
+		l.info("affecterEmployeADepartement loading...");
+
 		Departement depManagedEntity = deptRepoistory.findById(depId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
@@ -72,6 +79,8 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
+		l.info("desaffecterEmployeDuDepartement loading...");
+
 		Departement dep = deptRepoistory.findById(depId).get();
 
 		int employeNb = dep.getEmployes().size();
@@ -86,11 +95,15 @@ public class EmployeServiceImpl implements IEmployeService {
 	// Tablesapce (espace disque) 
 
 	public int ajouterContrat(Contrat contrat) {
+		l.info("ajouterContrat loading...");
+
 		contratRepoistory.save(contrat);
 		return contrat.getReference();
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {
+		l.info("affecterContratAEmploye loading...");
+
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
@@ -100,12 +113,16 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public String getEmployePrenomById(int employeId) {
+		l.info("getEmployePrenomById loading...");
+
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 		return employeManagedEntity.getPrenom();
 	}
 	 
 	public void deleteEmployeById(int employeId)
 	{
+		l.info("deleteEmployeById loading...");
+
 		Employe employe = employeRepository.findById(employeId).get();
 
 		//Desaffecter l'employe de tous les departements
