@@ -134,7 +134,8 @@ public class EmployeServiceImpl implements IEmployeService {
 
 		employeRepository.delete(employe);
 	}
-
+	
+	//partie dorra
 	public void deleteContratById(int contratId) {
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		contratRepoistory.delete(contratManagedEntity);

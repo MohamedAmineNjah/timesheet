@@ -1,10 +1,12 @@
 package tn.esprit.spring.services;
 
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
@@ -16,7 +18,7 @@ import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.MissionRepository;
 import tn.esprit.spring.repository.TimesheetRepository;
-
+@Service
 public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 	
 	@Autowired
