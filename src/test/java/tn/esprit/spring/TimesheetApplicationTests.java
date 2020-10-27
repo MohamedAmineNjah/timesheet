@@ -15,12 +15,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Contrat;
+import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.Timesheet;
 import tn.esprit.spring.repository.ContratRepository;
+import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.repository.MissionRepository;
@@ -42,6 +44,9 @@ public class TimesheetApplicationTests {
 	
 	@Autowired
 	EntrepriseRepository entrepriserepository;
+	
+	@Autowired
+	DepartementRepository deptRepoistory;
 	 /*****************************partie dorra***************************************/
 /*
 	@Test
@@ -159,12 +164,73 @@ public class TimesheetApplicationTests {
 	 /*****************************fin partie dorra***************************************/
 	
 	
+	 
+	 
+	 /*****************************début partie Njah***************************************/
+	 /*@Test
+		public void testauthenticate() {
+		
+		 Employe e1 = new Employe("salah", "salah", "s.s@gmail.tn","pass", true, Role.INGENIEUR);
+			iemployeservice.addOrUpdateEmploye(e1);
+			Employe e = iemployeservice.authenticate("salah", "pass");
+			System.out.println("************************************************************************");
+			if (e == null)	
+			System.out.println("nuuuuuuuuuuuuuuuuullll");
+					assertEquals("salah", e.getNom());
+	}*/
+	 /*@Test
+		public void testaddOrUpdateEmploye() {
+		 int nbr = iemployeservice.getNombreEmployeJPQL() ;
+			Employe e2 = new Employe("mohamed", "mohamed", "m.m@gmail.tn", true, Role.ADMINISTRATEUR);
+			iemployeservice.addOrUpdateEmploye(e2);
+		
+			assertEquals(nbr+1, iemployeservice.getNombreEmployeJPQL());
+	}*/
+	 /*@Test
+		public void testmettreAjourEmailByEmployeId() {
+					int id = employerepository.findById(16).get().getId();
+					iemployeservice.mettreAjourEmailByEmployeId("new.new@gmail.tn", id);
+					assertEquals("new.new@gmail.tn", employerepository.findById(16).get().getEmail());
+				}*/
+	/* @Test
+		public void testaffecterEmployeDuDepartement() {
+			iemployeservice.affecterEmployeADepartement(15,1);
+			Departement dep = deptRepoistory.findById(1).get();
+			Employe employe = employerepository.findById(15).get();
+			
+			int id1 = employe.getDepartements().get(0).getId();
+		
+					assertEquals(1,id1);
+				}*/
+	 /*@Test
+		public void testdesaffecterEmployeDuDepartement() {
+			iemployeservice.desaffecterEmployeDuDepartement(15,1);
+			Departement dep = deptRepoistory.findById(1).get();
+			Employe employe = employerepository.findById(15).get();
+			
+					assertEquals("", employe.getDepartements());
+					
+				}*/
+	 /*@Test
+		public void testdeleteEmployeById() {
+		int nbr = iemployeservice.getNombreEmployeJPQL() ;
+		iemployeservice.deleteEmployeById(19);
+		
+		assertEquals(nbr-1, iemployeservice.getNombreEmployeJPQL());
+	 }*/
+	 /*@Test
+		public void testajouterContrat() {
+		int nbr = contratrepository.countcont() ;
+		Contrat c = new Contrat(1, "typ1", 2);
+		iemployeservice.ajouterContrat(c);
+		
+		assertEquals(nbr+1, contratrepository.countcont());
+	 }*/
+	 
 	
 	
 	
 	
 	
-	
-	
-
+	 /*****************************fin partie Njah***************************************/
 }
