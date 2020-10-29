@@ -3,6 +3,7 @@ package tn.esprit.spring.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.dto.ContratDTO;
+import tn.esprit.spring.dto.EmployeDTO;
+
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Timesheet;
+import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 import tn.esprit.spring.services.ITimesheetOneService;
@@ -28,18 +33,31 @@ public class RestControlEmploye {
 	@Autowired
 	IEmployeService iemployeservice;
 	@Autowired
+	EmployeRepository er;
+	@Autowired
 	IEntrepriseService ientrepriseservice;
 	@Autowired
 	ITimesheetOneService itimesheetservice;
-
+	
+	
+	
+    ModelMapper modelMapper;
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterEmployer
-	//{"id":1,"nom":"kallel", "prenom":"khaled", "email":"Khaled.kallel@ssiiconsulting.tn", "isActif":true, "role":"INGENIEUR"}
 	
+	
+	private Employe convertToEntity(EmployeDTO e)  {
+		return modelMapper.map(e, Employe.class);
+	}
+	private Contrat convertcToEntity(ContratDTO e)  {
+		return modelMapper.map(e, Contrat.class);
+	}
+
 	@PostMapping("/ajouterEmployer")
 	@ResponseBody
-	public Employe ajouterEmploye(@RequestBody Employe employe)
+	public Employe ajouterEmploye(@RequestBody EmployeDTO e ) 
 	{
+		Employe employe = convertToEntity(e);
 		iemployeservice.addOrUpdateEmploye(employe);
 		return employe;
 	}
@@ -66,10 +84,10 @@ public class RestControlEmploye {
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/ajouterContrat
-	//{"reference":6,"dateDebut":"2020-03-01","salaire":2000,"typeContrat":"CDD"}
 	@PostMapping("/ajouterContrat")
 	@ResponseBody
-	public int ajouterContrat(@RequestBody Contrat contrat) {
+	public int ajouterContrat(@RequestBody ContratDTO c)  {
+		Contrat contrat = convertcToEntity(c);
 		iemployeservice.ajouterContrat(contrat);
 		return contrat.getReference();
 	}
@@ -161,8 +179,7 @@ public class RestControlEmploye {
 	}
 
 	
-	//TODO
-	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
+		public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
 			Date dateFin) {
 		return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
 	}

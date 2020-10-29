@@ -1,6 +1,5 @@
 package tn.esprit.spring.repository;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +9,4 @@ import tn.esprit.spring.entities.Contrat;
 public interface ContratRepository extends CrudRepository<Contrat, Integer>{
 
 	// JPQL 
-    //njah
-	@Query("SELECT count(*) FROM Contrat")
-    public int countcont();
 } 

@@ -23,6 +23,15 @@
 	</properties>
 
 	<dependencies>
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+<dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>2.3.5</version>
+</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -181,13 +190,15 @@
 		</pluginManagement>
 	</build>
 	<distributionManagement>
-		<snapshotRepository>
-		  <id>nexus-snapshots</id>
-		  <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-		<repository>
-		  <id>nexus-releases</id>
-		  <url>http://localhost:8081/nexus/content/repositories/releases/</url>
-		</repository>
-	  </distributionManagement>
+	<snapshotRepository>
+	<id>nexus-snapshots</id>
+	<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+	</snapshotRepository>
+	<repository>
+	<id>nexus-releases</id>
+	<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+	</repository>
+	</distributionManagement>
+
+
 </project>
