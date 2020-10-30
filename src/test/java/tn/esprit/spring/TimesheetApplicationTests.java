@@ -27,12 +27,21 @@ import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.repository.MissionRepository;
 import tn.esprit.spring.services.IEmployeService;
+import tn.esprit.spring.services.IEntrepriseService;
+import tn.esprit.spring.services.IDepartementService;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TimesheetApplicationTests {
 	@Autowired 
 	IEmployeService iemployeservice; 
+
+	@Autowired 
+	IEntrepriseService ientrepriseservice;
+	
+	@Autowired 
+	IDepartementService idepartementservice;
 	
 	@Autowired
 	EmployeRepository employerepository;
@@ -233,4 +242,27 @@ public class TimesheetApplicationTests {
 	
 	
 	 /*****************************fin partie Njah***************************************/
+	 /*****************************début partie Ghassen***************************************/
+ /*@Test
+		public void testajouterEntreprise() {
+		int nb = entrepriserepository.countcont() ;
+		Entreprise ent = new Entreprise(1, "Google", "info");
+		ientrepriseservice.ajouterEntreprise(ent);
+		
+		assertEquals(nb+1, entrepriserepository.countcont());
+	 }*/
+
+/*@Test
+		public void testajouterDepartment() {
+		int nb = departmentrepository.countcont() ;
+		Departement dep = new Departement(1, "Dev", 1);
+		idepartementservice.ajouterDepartement(dep);
+		
+		assertEquals(nb+1, departementrepository.countcont());
+	 }*/
+
+/*@Test
+		public void testdeleteDepartment() {
+		}*/	 
+
 }
