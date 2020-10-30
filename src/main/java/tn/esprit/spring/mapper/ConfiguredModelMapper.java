@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConfiguredModelMapper extends org.modelmapper.ModelMapper{
 	
+	
 	public ConfiguredModelMapper() {
         super();
         this.getConfiguration().setAmbiguityIgnored(true);
