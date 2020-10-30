@@ -17,9 +17,8 @@ import tn.esprit.spring.entities.Mission;
 public class DepartementDTO{
 	
 
-	int id;
 	
-	 String name;
+	private String name;
 	
 	//@JsonManagedReference 
 	@JsonIgnore
@@ -31,6 +30,38 @@ public class DepartementDTO{
 	
 	@ManyToOne
 	private Entreprise entreprise;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Employe> getEmployes() {
+		return employes;
+	}
+
+	public void setEmployes(List<Employe> employes) {
+		this.employes = employes;
+	}
+
+	public List<Mission> getMissions() {
+		return missions;
+	}
+
+	public void setMissions(List<Mission> missions) {
+		this.missions = missions;
+	}
+
+	public Entreprise getEntreprise() {
+		return entreprise;
+	}
+
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
+	}
 
 	
 	
