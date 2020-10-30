@@ -32,8 +32,6 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 	@Autowired
 	EmployeRepository employeRepository;
 	
-	
-	
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
 		System.out.println("In valider Timesheet");
 		Employe validateur = employeRepository.findById(validateurId).get();
