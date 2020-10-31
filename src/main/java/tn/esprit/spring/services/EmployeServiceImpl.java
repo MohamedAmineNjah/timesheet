@@ -37,7 +37,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Override
 	public Employe authenticate(String login, String password) {
 		l.info("authetication loading...");
-		return employeRepository.getEmployeByEmailAndPassword(login, password);
+		return employeRepository.findEmployeByEmailAndPassword(login, password);
 	}
 
 	@Override
