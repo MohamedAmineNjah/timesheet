@@ -71,17 +71,26 @@ public class TimesheetOneServiceImpl implements ITimesheetOneService {
 		}
 
 	public void ajouterTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin) {
+		l.info("Début de l'exécution de la méthode d'ajout d'un timesheet");
+		l.debug("Création d'une instance Timesheet Primary Key");
 		TimesheetPK timesheetPK = new TimesheetPK();
+		l.debug("Ajout du date de debut paramétrée dans l'instance Timesheet Primary Key");
 		timesheetPK.setDateDebut(dateDebut);
+		l.debug("Ajout du date de fin paramétrée dans l'instance Timesheet Primary Key");
 		timesheetPK.setDateFin(dateFin);
+		l.debug("Ajout du date de l'id employé paramétrée dans l'instance Timesheet Primary Key");
 		timesheetPK.setIdEmploye(employeId);
+		l.debug("Ajout du date de l'id mission paramétrée dans l'instance Timesheet Primary Key");
 		timesheetPK.setIdMission(missionId);
-		
+		l.debug("Instanciation d'une entité Timesheet");
 		Timesheet timesheet = new Timesheet();
+		l.debug("Ajouter la clé primaire dans l'entité Timesheet");
 		timesheet.setTimesheetPK(timesheetPK);
-		timesheet.setValide(false); //par defaut non valide
+		l.debug("Modifier l'attribut Valide de l'entité Timesheet");
+		timesheet.setValide(false);
+		l.debug("Enregistrer l'ajout de l'entité Timesheet");
 		timesheetRepository.save(timesheet);
-		
+		l.info("Fin de l'exécution de la méthode d'ajout d'un timesheet");
 	}
 
 }
