@@ -32,11 +32,9 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 	@Autowired
 	EmployeRepository employeRepository;
 	
-<<<<<<< HEAD
-=======
+
 	private static final Logger l = Logger.getLogger(TimesheetTwoServiceImpl.class);
 	
->>>>>>> 93bf133ee2cbd9685bf20f7f837ac304d5148658
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
 		
 		l.info("In valider Timesheet");
