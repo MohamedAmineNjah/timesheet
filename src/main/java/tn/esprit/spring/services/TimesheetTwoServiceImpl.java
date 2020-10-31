@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,25 +32,35 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 	@Autowired
 	EmployeRepository employeRepository;
 	
+<<<<<<< HEAD
+=======
+	private static final Logger l = Logger.getLogger(TimesheetTwoServiceImpl.class);
+	
+>>>>>>> 93bf133ee2cbd9685bf20f7f837ac304d5148658
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
-		System.out.println("In valider Timesheet");
-		Employe validateur = employeRepository.findById(validateurId).get();
-		Mission mission = missionRepository.findById(missionId).get();
+		
+		l.info("In valider Timesheet");
+		
+		Optional<Employe> validateur = employeRepository.findById(validateurId);
+		Optional<Mission> mission = missionRepository.findById(missionId);
+		
 		//verifier s'il est un chef de departement (interet des enum)
-		if(!validateur.getRole().equals(Role.CHEF_DEPARTEMENT)){
-			System.out.println("l'employe doit etre chef de departement pour valider une feuille de temps !");
+		if(validateur.isPresent() && !validateur.get().getRole().equals(Role.CHEF_DEPARTEMENT)){
+			l.error("l'employe doit etre chef de departement pour valider une feuille de temps !");
 			return;
 		}
+		
+		if(validateur.isPresent()) {
 		//verifier s'il est le chef de departement de la mission en question
 		boolean chefDeLaMission = false;
-		for(Departement dep : validateur.getDepartements()){
-			if(dep.getId() == mission.getDepartement().getId()){
+		for(Departement dep : validateur.get().getDepartements()){
+			if(mission.isPresent() && dep.getId() == mission.get().getDepartement().getId()){
 				chefDeLaMission = true;
 				break;
 			}
 		}
 		if(!chefDeLaMission){
-			System.out.println("l'employe doit etre chef de departement de la mission en question");
+			l.error("l'employe doit etre chef de departement de la mission en question");
 			return;
 		}
 //
@@ -60,10 +70,10 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 		
 		//Comment Lire une date de la base de données
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		System.out.println("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
+		l.info("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
 		
 	}
-
+	}
 	
 	public List<Mission> findAllMissionByEmployeJPQL(int employeId) {
 		return timesheetRepository.findAllMissionByEmployeJPQL(employeId);
