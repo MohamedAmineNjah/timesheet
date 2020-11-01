@@ -282,11 +282,23 @@ public class TimesheetApplicationTests {
 /* @Test
 		public void testaffecterDepartementAEntreprise() {
 			ientrepriseservice.affecterDepartementAEntreprise(1,1);
-			Entreprise ent = entreptriserepository.findById(1).get();
+			Entreprise ent = entrepriserepository.findById(1).get();
 			Departement dep = deptRepoistory.findById(1).get();
 			
-			
-			
-				}*/	 
-
+			int id = ent.getDepartements().get(0).getId();
+			assertEquals(1,id);
+				} 
+*/
+/*
+@Test
+	public void getAllDepartementByEntreprise() {
+		
+				Entreprise E = entrepriserepository.findById(1).get();
+				List<Departement> L = E.getDepartements();
+				String name = L.get(0).getName();
+				assertEquals("a", name);
+			}
+	
+*/
+ /*****************************fin partie Ghassen***************************************/
 }
