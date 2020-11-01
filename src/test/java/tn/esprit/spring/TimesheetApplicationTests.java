@@ -249,7 +249,7 @@ public class TimesheetApplicationTests {
 		Entreprise ent = new Entreprise(1, "Google", "info");
 		ientrepriseservice.ajouterEntreprise(ent);
 		
-		assertEquals(nb+1, entrepriserepository.countcont());
+		assertEquals(nb+1, entrepriserepository.countent());
 	 }*/
 
 /*@Test
@@ -258,11 +258,37 @@ public class TimesheetApplicationTests {
 		Departement dep = new Departement(1, "Dev", 1);
 		idepartementservice.ajouterDepartement(dep);
 		
-		assertEquals(nb+1, departementrepository.countcont());
+		assertEquals(nb+1, departementrepository.countdep());
 	 }*/
 
 /*@Test
-		public void testdeleteDepartment() {
-		}*/	 
+	
+		public void testdeleteEntrepriseById() {
+		int nb = entrepriserepository.countent() ;
+		ientrepriseservice.deleteEntrepriseById(7);
+		
+		assertEquals(nb-1, entrepriserepository.countent());
+	 }*/
+
+/*@Test
+	
+		public void testdeleteDepartementById() {
+		int nb = departementrepository.countdep() ;
+		idepartementservice.deletedepartementById(7);
+		
+		assertEquals(nb-1, departementrepository.countdep());
+	 }*/	
+
+/* @Test
+		public void testaffecterDepartementAEntreprise() {
+			ientrepriseservice.affecterDepartementAEntreprise(1,1);
+			Entreprise ent = entreptriserepository.findById(1).get();
+			Departement dep = deptRepoistory.findById(1).get();
+			
+			
+			int id1 = employe.getDepartements().get(0).getId();
+		
+					assertEquals(1,id1);
+				}*/	 
 
 }
