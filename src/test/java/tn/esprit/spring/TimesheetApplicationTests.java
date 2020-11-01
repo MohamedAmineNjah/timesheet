@@ -76,16 +76,16 @@ public class TimesheetApplicationTests {
 				assertEquals(2, nbr);
 }
 	
-	/*
+	
 	
 	@Test
 	public void getAllEmployeNamesJPQL() {
 		
 				List<String> L = iemployeservice.getAllEmployeNamesJPQL();
 				String name = L.get(0);
-				assertEquals("a", name);
+				assertEquals("s", name);
 			}
-	*/
+	
 	/*
 	@Test
 	public void getAllEmployes() {
