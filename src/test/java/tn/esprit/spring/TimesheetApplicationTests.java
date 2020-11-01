@@ -53,7 +53,7 @@ public class TimesheetApplicationTests {
 	public void contextLoads() {
 	}
 	*/
-	/*
+	
 	@Test
 	public void testdeleteContratById() {
 	
@@ -62,8 +62,8 @@ public class TimesheetApplicationTests {
 				iemployeservice.deleteContratById(c.getReference());
 				assertNull(employerepository.findById(c.getReference()));
 }
-*/
-	/*
+
+	
 	
 	@Test
 	public void getNombreEmployeJPQL() {
@@ -73,9 +73,9 @@ public class TimesheetApplicationTests {
 				iemployeservice.addOrUpdateEmploye(e1);
 				iemployeservice.addOrUpdateEmploye(e2);
 				int nbr = iemployeservice.getNombreEmployeJPQL() ;
-				assertEquals(3, nbr);
+				assertEquals(2, nbr);
 }
-	*/
+	
 	/*
 	
 	@Test
