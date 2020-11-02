@@ -29,7 +29,6 @@ public class TimesheetOneServiceImpl implements ITimesheetOneService {
 	@Autowired
 	EmployeRepository employeRepository;
 	
-	
 	private static final Logger l = Logger.getLogger(TimesheetOneServiceImpl.class);
 	
 	public int ajouterMission(Mission mission) {
