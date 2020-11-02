@@ -62,23 +62,27 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 			return;
 		}
 //
+		l.debug("Création Timesheet");
 		TimesheetPK timesheetPK = new TimesheetPK(missionId, employeId, dateDebut, dateFin);
 		Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
+		l.debug("Validation Timesheet");
 		timesheet.setValide(true);
 		
 		//Comment Lire une date de la base de données
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		l.info("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
-		
+		l.info("Out of valider Timesheet");
 	}
 	}
 	
 	public List<Mission> findAllMissionByEmployeJPQL(int employeId) {
+		l.info("In findAllMissionByEmployeJPQL");
 		return timesheetRepository.findAllMissionByEmployeJPQL(employeId);
 	}
 
 	
 	public List<Employe> getAllEmployeByMission(int missionId) {
+		l.info("In getAllEmployeByMission");
 		return timesheetRepository.getAllEmployeByMission(missionId);
 	}
 
