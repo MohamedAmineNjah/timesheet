@@ -4,6 +4,7 @@ stages{
 stage('clone and clean repo'){
 steps {
     
+    
     bat "mvn clean -f timesheet"
 }
 
