@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import tn.esprit.spring.entities.Contrat;
+import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Mission;
@@ -26,8 +27,9 @@ public interface IEmployeService {
 	public int getNombreEmployeJPQL();
 	public List<String> getAllEmployeNamesJPQL();
 	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise);
+	public List<Employe> 	getAllEmployeByDepartement(Departement departement);
 	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId);
-	public void deleteAllContratJPQL();
+	public boolean deleteAllContratJPQL();
 	public float getSalaireByEmployeIdJPQL(int employeId);
 	public Double getSalaireMoyenByDepartementId(int departementId);
 	public List<Employe> getAllEmployes();

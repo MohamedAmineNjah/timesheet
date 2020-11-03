@@ -84,7 +84,6 @@ public class EmployeServiceImpl implements IEmployeService {
 				employes.add(employeManagedEntity);
 				depManagedEntity.setEmployes(employes);
 			}else{
-
 				depManagedEntity.getEmployes().add(employeManagedEntity);
 			}
 
@@ -200,13 +199,20 @@ public class EmployeServiceImpl implements IEmployeService {
 	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise) {
 		return employeRepository.getAllEmployeByEntreprisec(entreprise);
 	}
+	
+	public List<Employe> getAllEmployeByDepartement(Departement departement) {
+		return employeRepository.getAllEmployeByDepartement(departement);
+	}
+	
+	
 
 	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId) {
 		employeRepository.mettreAjourEmailByEmployeIdJPQL(email, employeId);
 
 	}
-	public void deleteAllContratJPQL() {
+	public boolean deleteAllContratJPQL() {
 		employeRepository.deleteAllContratJPQL();
+		return true ;
 	}
 
 	public float getSalaireByEmployeIdJPQL(int employeId) {

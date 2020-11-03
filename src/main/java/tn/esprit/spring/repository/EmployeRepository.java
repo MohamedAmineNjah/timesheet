@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
  
@@ -17,10 +18,7 @@ import tn.esprit.spring.entities.Entreprise;
 public interface EmployeRepository extends CrudRepository<Employe, Integer>  {
 	
 	public Employe findEmployeByEmailAndPassword(String email, String password);
-	
-	
-	
-	
+
 	@Query("SELECT count(*) FROM Employe")
     public int countemp();
 	
@@ -33,6 +31,15 @@ public interface EmployeRepository extends CrudRepository<Employe, Integer>  {
 			+ "join dps.entreprise entrep "
 			+ "where entrep=:entreprise")
     public List<Employe> getAllEmployeByEntreprisec(@Param("entreprise") Entreprise entreprise);
+    
+    @Query("Select "
+			+ "DISTINCT emp from Employe emp "
+			+ "join emp.departements dps "
+			+ "where dps=:departement")
+    public List<Employe> getAllEmployeByDepartement(@Param("departement") Departement departement);
+
+    
+    
     
     @Modifying
     @Transactional

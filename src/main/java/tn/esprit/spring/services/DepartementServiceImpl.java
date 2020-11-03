@@ -19,5 +19,9 @@ public class DepartementServiceImpl implements IDepartementService {
 	public List<Departement> getAllDepartements() {
 		return (List<Departement>) deptRepoistory.findAll();
 	}
+	
+	public Departement addDepartement(Departement d) {
+		return  deptRepoistory.save(d);
+	}
 
 }
