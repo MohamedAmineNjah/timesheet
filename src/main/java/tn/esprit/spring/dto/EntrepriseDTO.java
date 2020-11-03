@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 
 import tn.esprit.spring.entities.Departement;
 
-
+/*Ghassen Belhouchet*/
 
 public class EntrepriseDTO{
 	

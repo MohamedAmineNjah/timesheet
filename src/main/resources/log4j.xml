@@ -16,6 +16,6 @@ MM-dd HH:mm:ss} %l:%L - %m%n" /></layout>
 </appender>
 <root> <level value="INFO" />
 <appender-ref ref="console" />
-
+<appender-ref ref="file" />
 </root>
 </log4j:configuration>
