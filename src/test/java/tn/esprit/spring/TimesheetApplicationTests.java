@@ -1,9 +1,8 @@
 package tn.esprit.spring;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -239,15 +238,15 @@ public class TimesheetApplicationTests {
 
 	@Test
 	public void testingAffecterEmployeADepartement() {
-		 iemployeservice.affecterEmployeADepartement(1,1);
-		 assertEquals(false,iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
+		iemployeservice.affecterEmployeADepartement(1, 1);
+		assertEquals(false, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
 	}
 
-	 @Test
-	 public void testingDesaffecterEmployeDuDepartement() {
-	 iemployeservice.desaffecterEmployeDuDepartement(1,1);
-	 assertEquals(true,iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
-	 }
+	@Test
+	public void testingDesaffecterEmployeDuDepartement() {
+		iemployeservice.desaffecterEmployeDuDepartement(1, 1);
+		assertEquals(true, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
+	}
 
 	// @After
 	// public void destroy() {
@@ -255,39 +254,38 @@ public class TimesheetApplicationTests {
 	// assertEquals(true,iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
 	// }
 
-	 @Test
-	 public void testingAddContrat() {
-	 int nbr = (int) contratrepository.count();
-	 Contrat c = new Contrat(23181323, "CDO", 1000.0f);
-	 iemployeservice.ajouterContrat(c);
-	
-	 assertEquals(nbr + 1, contratrepository.count());
-	 }
-	
-	 @Test
-	 public void testingDeleteAllContratJPQL() {
-	 iemployeservice.deleteAllContratJPQL();
-	 assertEquals(true,iemployeservice.deleteAllContratJPQL());
-	 }
-	
-	
-	
-	 @Test
-	 public void testingDeleteContratById() {
-	 Contrat c = new Contrat(1, "typ1", 2);
-	 iemployeservice.ajouterContrat(c);
-	 iemployeservice.deleteContratById(c.getReference());
-	// assertNull(employerepository.findById(c.getReference()));
-	 assertEquals(Optional.empty(), employerepository.findById(c.getReference()));
-	 }
-	
+	@Test
+	public void testingAddContrat() {
+		int nbr = (int) contratrepository.count();
+		Contrat c = new Contrat(23181323, "CDO", 1000.0f);
+		iemployeservice.ajouterContrat(c);
 
-	 @Test
-	 public void testingGetAllEmployes() {
-	 iemployeservice.getAllEmployes();
-	 assertEquals(true,iemployeservice.deleteAllContratJPQL());
-	 }
+		assertEquals(nbr + 1, contratrepository.count());
+	}
 
-	 /*****************************fin partie Saadouli***************************************/
+	@Test
+	public void testingDeleteAllContratJPQL() {
+		iemployeservice.deleteAllContratJPQL();
+		assertEquals(true, iemployeservice.deleteAllContratJPQL());
+	}
+
+	@Test
+	public void testingDeleteContratById() {
+		Contrat c = new Contrat(1, "typ1", 2);
+		iemployeservice.ajouterContrat(c);
+		iemployeservice.deleteContratById(c.getReference());
+		// assertNull(employerepository.findById(c.getReference()));
+		assertEquals(Optional.empty(), employerepository.findById(c.getReference()));
+	}
+
+	@Test
+	public void testingGetAllEmployes() {
+		iemployeservice.getAllEmployes();
+		assertEquals(true, iemployeservice.deleteAllContratJPQL());
+	}
+
+	/*****************************
+	 * fin partie Saadouli
+	 ***************************************/
 
 }
