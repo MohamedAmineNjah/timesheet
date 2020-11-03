@@ -48,7 +48,6 @@ public class TimesheetTwoServiceImplTest {
 	@Test
 	public void testFindAllMissionByEmployeJPQL() {
 		assertNotNull(timesheetTwoServiceImpl.findAllMissionByEmployeJPQL(3));
-		
 	}
 	
 	@Test
