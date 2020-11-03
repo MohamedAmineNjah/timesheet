@@ -64,9 +64,10 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 //
 		l.debug("Création Timesheet");
 		TimesheetPK timesheetPK = new TimesheetPK(missionId, employeId, dateDebut, dateFin);
-		Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
-		l.debug("Validation Timesheet");
+		Timesheet timesheet =timesheetRepository.findByMission(missionRepository.findById(missionId).get());
+		l.info("Validation Timesheet");
 		timesheet.setValide(true);
+		timesheetRepository.save(timesheet);
 		
 		//Comment Lire une date de la base de données
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
