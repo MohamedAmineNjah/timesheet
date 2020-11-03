@@ -281,10 +281,13 @@ public class TimesheetApplicationTests {
 	 assertEquals(Optional.empty(), employerepository.findById(c.getReference()));
 	 }
 	
+
 	 @Test
 	 public void testingGetAllEmployes() {
 	 iemployeservice.getAllEmployes();
 	 assertEquals(true,iemployeservice.deleteAllContratJPQL());
 	 }
+
+	 /*****************************fin partie Saadouli***************************************/
 
 }
