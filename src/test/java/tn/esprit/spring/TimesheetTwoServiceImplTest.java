@@ -37,22 +37,26 @@ public class TimesheetTwoServiceImplTest {
 	public void testFindByMission() {
 		Timesheet timesheet = timesheetRepository.findByMission(missionRepository.findById(1002).get());
 		assertEquals(1002, timesheet.getMission().getId());
+		
 	}
 	
 	@Test
 	public void testValiderTimesheet() {
 		Timesheet timesheet =timesheetRepository.findByMission(missionRepository.findById(1002).get());
 		assertTrue(timesheet.isValide());
+		
 	}
 	
 	@Test
 	public void testFindAllMissionByEmployeJPQL() {
 		assertNotNull(timesheetTwoServiceImpl.findAllMissionByEmployeJPQL(3));
+		
 	}
 	
 	@Test
 	public void testGetAllEmployeByMission() {
 		assertNotNull(timesheetTwoServiceImpl.getAllEmployeByMission(1002));
+		
 	}
 	
 }
