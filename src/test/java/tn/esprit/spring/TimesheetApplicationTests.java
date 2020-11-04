@@ -214,80 +214,80 @@ public class TimesheetApplicationTests {
 	 * Debut partie saadouli
 	 ***************************************/
 
-	Employe employe = new Employe(1, "oussema", "saadouli");
-	Departement departement = new Departement(1, "Atlas");
-	Contrat contrat = new Contrat(23181323, "CDI", 1200.0f);
-
-	@Before
-	public void init() {
-		deptRepoistory.save(departement);
-		employerepository.save(employe);
-//		List<Contrat> list = contratService.getAllContrats();
-//		assertEquals(true, list.isEmpty());
-	}
-
-	@Test
-	public void testingAddContrat() {
-		int nbr = (int) contratrepository.count();
-		int contratReference = contratService.addContrat(contrat);
-		assertNotNull(contratReference);
-		assertEquals(nbr + 1, contratrepository.count());
-	}
-
-	@Test
-	public void testingFindByContrat() {
-		int contratReference = contratService.addContrat(contrat);
-		Optional<Contrat> contrat = contratrepository.findById(contratReference);
-		if (contrat.isPresent()) {
-		assertEquals(contratReference, contrat.get().getReference());
-		}
-	}
-	
-	@Test
-	public void testingAffecterContratAEmploye() {
-		int contratRef = contratService.addContrat(contrat);
-		contratService.affecterContratAEmploye(contratRef, 1);
-		Optional<Contrat> contrat = contratrepository.findById(contratRef);
-		if (contrat.isPresent()) {
-		assertEquals(1,contrat.get().getEmploye().getId());
-		}
-	}
-	
-	@Test
-	public void testAffecterEmployeADepartement() {
-		iemployeservice.affecterEmployeADepartement(1, 1);
-		assertEquals(false, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
-	}
-	
-	
-
-//	@Test
-//	public void testingGetAllContrats() {
-//		List<Contrat> list = contratService.getAllContrats();
-//		assertEquals(false, list.isEmpty());
+//	Employe employe = new Employe(1, "oussema", "saadouli");
+//	Departement departement = new Departement(1, "Atlas");
+//	Contrat contrat = new Contrat(23181323, "CDI", 1200.0f);
+//
+//	@Before
+//	public void init() {
+//		deptRepoistory.save(departement);
+//		employerepository.save(employe);
+////		List<Contrat> list = contratService.getAllContrats();
+////		assertEquals(true, list.isEmpty());
 //	}
-
-
-	// @Test
-	// public void testDeleteAllContratJPQL() {
-	// iemployeservice.deleteAllContratJPQL();
-	// assertEquals(true, iemployeservice.deleteAllContratJPQL());
-	// }
-
-
+//
 //	@Test
-//	public void testDesaffecterEmployeDuDepartement() {
-//		iemployeservice.desaffecterEmployeDuDepartement(1, 1);
-//		assertEquals(true, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
+//	public void testingAddContrat() {
+//		int nbr = (int) contratrepository.count();
+//		int contratReference = contratService.addContrat(contrat);
+//		assertNotNull(contratReference);
+//		assertEquals(nbr + 1, contratrepository.count());
 //	}
-
-	@After
-	public void destroy() {
-//		iemployeservice.desaffecterEmployeDuDepartement(1, 1);
-//		assertEquals(true, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
-//		iemployeservice.deleteAllContratJPQL();
-//		assertEquals(true, iemployeservice.deleteAllContratJPQL());
-	}
+//
+//	@Test
+//	public void testingFindByContrat() {
+//		int contratReference = contratService.addContrat(contrat);
+//		Optional<Contrat> contrat = contratrepository.findById(contratReference);
+//		if (contrat.isPresent()) {
+//		assertEquals(contratReference, contrat.get().getReference());
+//		}
+//	}
+//	
+//	@Test
+//	public void testingAffecterContratAEmploye() {
+//		int contratRef = contratService.addContrat(contrat);
+//		contratService.affecterContratAEmploye(contratRef, 1);
+//		Optional<Contrat> contrat = contratrepository.findById(contratRef);
+//		if (contrat.isPresent()) {
+//		assertEquals(1,contrat.get().getEmploye().getId());
+//		}
+//	}
+//	
+//	@Test
+//	public void testAffecterEmployeADepartement() {
+//		iemployeservice.affecterEmployeADepartement(1, 1);
+//		assertEquals(false, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
+//	}
+//	
+//	
+//
+////	@Test
+////	public void testingGetAllContrats() {
+////		List<Contrat> list = contratService.getAllContrats();
+////		assertEquals(false, list.isEmpty());
+////	}
+//
+//
+//	// @Test
+//	// public void testDeleteAllContratJPQL() {
+//	// iemployeservice.deleteAllContratJPQL();
+//	// assertEquals(true, iemployeservice.deleteAllContratJPQL());
+//	// }
+//
+//
+////	@Test
+////	public void testDesaffecterEmployeDuDepartement() {
+////		iemployeservice.desaffecterEmployeDuDepartement(1, 1);
+////		assertEquals(true, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
+////	}
+//
+//	@After
+//	public void destroy() {
+////		iemployeservice.desaffecterEmployeDuDepartement(1, 1);
+////		assertEquals(true, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
+////		iemployeservice.deleteAllContratJPQL();
+////		assertEquals(true, iemployeservice.deleteAllContratJPQL());
+//	}
 
 	/*****************************
 	 * fin partie Saadouli
