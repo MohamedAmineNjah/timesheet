@@ -14,10 +14,5 @@ public interface EntrepriseRepository extends CrudRepository<Entreprise, Integer
 	
 	@Query("SELECT count(*) FROM Entreprise")
     public int countent();
-    /* @Query("Select"
-    + "DISTINCT dep from Departement dep "
-    + "join dep.entreprise ent "
-    + "where ent=:entreprise")
-public List<Entreprise> getAllDepartementsNamesByEntreprise(@Param("entreprise") Entreprise entreprise);*/
-
+    
 }
