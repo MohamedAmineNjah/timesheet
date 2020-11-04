@@ -15,7 +15,6 @@ import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.Timesheet;
-import tn.esprit.spring.entities.TimesheetPK;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.MissionRepository;
@@ -63,7 +62,7 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 		}
 //
 		l.debug("Création Timesheet");
-		TimesheetPK timesheetPK = new TimesheetPK(missionId, employeId, dateDebut, dateFin);
+//		TimesheetPK timesheetPK = new TimesheetPK(missionId, employeId, dateDebut, dateFin);
 		Timesheet timesheet =timesheetRepository.findByMission(missionRepository.findById(missionId).get());
 		l.info("Validation Timesheet");
 		timesheet.setValide(true);

@@ -2,14 +2,13 @@ package tn.esprit.spring;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,16 +21,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Entreprise;
-import tn.esprit.spring.entities.Mission;
-import tn.esprit.spring.entities.Role;
-import tn.esprit.spring.entities.Timesheet;
+
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.repository.MissionRepository;
-import tn.esprit.spring.services.ContratServiceImpl;
 import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.services.IEmployeService;
 
