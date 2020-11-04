@@ -228,7 +228,7 @@ public class TimesheetApplicationTests {
 	 */
 
 	/*****************************
-	 * fin partie Njah
+	 * fin partie Njahh
 	 ***************************************/
 
 	/*****************************
