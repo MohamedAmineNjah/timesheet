@@ -33,7 +33,7 @@ public class TimesheetTwoServiceImplTest {
 	@Autowired
 	TimesheetTwoServiceImpl timesheetTwoServiceImpl;
 	
-	
+	@Test public void contextLoads() { }
 	@Test
 	public void testFindByMission() {
 		Timesheet timesheet = timesheetRepository.findByMission(missionRepository.findById(1002).get());

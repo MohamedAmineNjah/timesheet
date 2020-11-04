@@ -34,6 +34,7 @@ public class TimesheetOneServiceImplTest {
 	@Autowired
 	IEmployeService employeService;
 	
+	@Test public void contextLoads() { }
 	@Test
 	public void testAjoutMission() {
 		Mission m = new Mission("mission1","mission de développement à France");

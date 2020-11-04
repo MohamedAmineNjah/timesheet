@@ -2,10 +2,11 @@ package tn.esprit.spring;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
-
+import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.entities.Mission;
+import tn.esprit.spring.entities.Role;
+import tn.esprit.spring.entities.Timesheet;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
@@ -57,101 +61,105 @@ public class TimesheetApplicationTests {
 		}
 	}
 
-	/*****************************
-	 * ok partie dorra
-	 ***************************************/
+	
+	 /** début partie dorra **/
+	 
 	/*
-	 * @Test public void contextLoads() { }
-	 */
+	  @Test public void contextLoads() { }
+	 
 
-	// @Test
-	// public void testdeleteContratById() {
-	//
-	// Contrat c = new Contrat(1, "typ1", 2);
-	// iemployeservice.ajouterContrat(c);
-	// iemployeservice.deleteContratById(c.getReference());
-	// assertNull(employerepository.findById(c.getReference()));
-	// }
-	//
-	// @Test
-	// public void getNombreEmployeJPQL() {
-	//
-	// Employe e1 = new Employe("salah", "salah", "s.s@gmail.tn", true,
-	// Role.INGENIEUR);
-	// Employe e2 = new Employe("mohamed", "mohamed", "m.m@gmail.tn", true,
-	// Role.ADMINISTRATEUR);
-	// iemployeservice.addOrUpdateEmploye(e1);
-	// iemployeservice.addOrUpdateEmploye(e2);
-	// int nbr = iemployeservice.getNombreEmployeJPQL();
-	// assertEquals(2, nbr);
-	// }
-	//
-	// @Test
-	// public void getAllEmployeNamesJPQL() {
-	//
-	// List<String> L = iemployeservice.getAllEmployeNamesJPQL();
-	// String name = L.get(0);
-	// assertEquals("s", name);
-	// }
+	 @Test
+	 public void deleteContratById() {
+	
+	 Contrat c = new Contrat(1, "typ1", 2);
+	 iemployeservice.ajouterContrat(c);
+	 iemployeservice.deleteContratById(c.getReference());
+	 assertNull(employerepository.findById(c.getReference()));
+	 }
+	
+	 @Test
+	 public void getNombreEmployeJPQL() {
+	
+	 Employe e1 = new Employe("salah", "salah", "s.s@gmail.tn", true,
+	 Role.INGENIEUR);
+	 Employe e2 = new Employe("mohamed", "mohamed", "m.m@gmail.tn", true,
+	 Role.ADMINISTRATEUR);
+	 iemployeservice.addOrUpdateEmploye(e1);
+	 iemployeservice.addOrUpdateEmploye(e2);
+	 int nbr = iemployeservice.getNombreEmployeJPQL();
+	 assertEquals(3, nbr);
+	 }
+	
+	 @Test
+	 public void getAllEmployeNamesJPQL() {
+	
+	List<String> L = iemployeservice.getAllEmployeNamesJPQL();
+	List<String> LT = new ArrayList<>() ;
+	LT.add("dorra");
+	LT.add("salah");
+	LT.add("mohamed");
+	 assertEquals(LT, L);
+	 }
 
-	/*
-	 * @Test public void getAllEmployes() {
-	 * 
-	 * List<Employe> L = iemployeservice.getAllEmployes();
-	 * 
-	 * assertEquals(1, L.size()); }
-	 * 
-	 */
-	/*
-	 * 
-	 * @Test public void getAllEmployeByEntreprise() {
-	 * 
-	 * Entreprise E = entrepriserepository.findById(1).get(); List<Employe> L =
-	 * iemployeservice.getAllEmployeByEntreprise(E); String name =
-	 * L.get(0).getNom(); assertEquals("a", name); }
-	 */
-	/*
-	 * @Test public void mettreAjourEmailByEmployeIdJPQL() {
-	 * 
-	 * 
-	 * int id = employerepository.findById(1).get().getId();
-	 * iemployeservice.mettreAjourEmailByEmployeIdJPQL("new.new@gmail.tn", id);
-	 * assertEquals("new.new@gmail.tn",
-	 * employerepository.findById(1).get().getEmail()); }
-	 */
+	
+	  @Test 
+	  public void getAllEmployes() {
+	  
+	  List<Employe> L = iemployeservice.getAllEmployes();
+	  
+	  assertEquals(3, L.size()); }
+	 
 
-	/*
-	 * @Test public void deleteAllContratJPQL() {
-	 * 
-	 * iemployeservice.deleteAllContratJPQL() ;
-	 * assertNull(contratrepository.findAll() ); }
-	 * 
+	  
+	  @Test 
+	  public void getAllEmployeByEntreprise() {
+	  
+	  Entreprise E = entrepriserepository.findById(1).get();
+	  List<Employe> L = iemployeservice.getAllEmployeByEntreprise(E);
+	  String name = L.get(0).getNom();
+	  assertEquals("dorra", name); 
+	  }
+	 
+	
+	  @Test 
+	  public void mettreAjourEmailByEmployeIdJPQL() {
+	  
+	  
+	  int id = employerepository.findById(1).get().getId();
+	  iemployeservice.mettreAjourEmailByEmployeIdJPQL("new.new@gmail.tn", id);
+	  
+	  assertEquals("new.new@gmail.tn",employerepository.findById(1).get().getEmail()); }
+	 
+	  
+	
+	@Test 
+	public void getSalaireByEmployeIdJPQL() {
+	
+	float s = iemployeservice.getSalaireByEmployeIdJPQL(employerepository.findById(1).get().getId()) ;
+	assertEquals(200.0, s, 0);
+	 }
+
+	 @Test 
+	 public void getTimesheetsByMissionAndDate() {
+	
+	 Employe e = employerepository.findById(1).get();
+	 Mission m = missionrepository.findById(1).get();
+	 Date dateDebut =parseDate("2010-01-01");
+	 Date dateFin = parseDate("2025-01-01");
+	
+	 List<Timesheet> t = iemployeservice.getTimesheetsByMissionAndDate(e, m,dateDebut, dateFin) ;
+	 assertNotNull(t);
+	
+	 }
 	 */
-
-	// @Test public void getSalaireByEmployeIdJPQL() {
-	//
-	//
-	// assertEquals(200,
-	// iemployeservice.getSalaireByEmployeIdJPQL(employerepository.findById(1).get()
-	// .getId()));
-	//
-	// }
-
-	// @Test public void getTimesheetsByMissionAndDate() {
-	// *
-	// * Employe e = employerepository.findById(1).get(); Mission m =
-	// * missionrepository.findById(1).get(); Date dateDebut =
-	// * parseDate("2010-01-01"); Date dateFin = parseDate("2025-01-01");
-	// *
-	// *
-	// * List<Timesheet> t = iemployeservice.getTimesheetsByMissionAndDate(e, m,
-	// * dateDebut, dateFin) ; assertNotNull(t);
-	// *
-	// * }
-	// */
-	/*****************************
-	 * fin partie dorra
-	 ***************************************/
+	/* @Test 
+	  public void deleteAllContratJPQL() {
+	  
+	  iemployeservice.deleteAllContratJPQL() ;
+	  assertNull(contratrepository.findAll() );
+	  }
+	*/
+	/**  fin partie dorra **/
 
 	/*****************************
 	 * début partie Njah
