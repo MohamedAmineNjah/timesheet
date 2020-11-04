@@ -113,12 +113,13 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 		}
 	
-	// Tablesapce (espace disque) 
+	// Tablesapce (espace disque)  
 
 	public int ajouterContrat(Contrat contrat) {
 		l.info("ajouterContrat loading...");
 		contratRepoistory.save(contrat);
 		return contrat.getReference();
+
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {
