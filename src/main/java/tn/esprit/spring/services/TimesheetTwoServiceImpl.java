@@ -61,9 +61,7 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 			return;
 		}
 //
-		l.debug("Création Timesheet");
-//		TimesheetPK timesheetPK = new TimesheetPK(missionId, employeId, dateDebut, dateFin);
-		
+		l.debug("Création Timesheet");		
 		Timesheet timesheet =timesheetRepository.findByMission(missionRepository.findById(missionId).get());
 		l.info("Validation Timesheet");
 		timesheet.setValide(true);
