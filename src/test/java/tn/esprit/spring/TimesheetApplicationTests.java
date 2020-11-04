@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,12 +32,16 @@ import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.repository.MissionRepository;
 import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.services.IEmployeService;
+import tn.esprit.spring.services.IEntrepriseService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TimesheetApplicationTests {
 	@Autowired
 	IEmployeService iemployeservice;
+
+	@Autowired
+	IEntrepriseService ientrepriseservice;
 
 	@Autowired
 	EmployeRepository employerepository;
@@ -300,62 +303,64 @@ public class TimesheetApplicationTests {
 	 * fin partie Saadouli
 	 ***************************************/
  /*****************************début partie Ghassen***************************************/
- /*@Test
+	/* 
+ @Test
 		public void testajouterEntreprise() {
-		int nb = entrepriserepository.countcont() ;
-		Entreprise ent = new Entreprise(1, "Google", "info");
+		int nb = entrepriserepository.countent() ;
+		Entreprise ent = new Entreprise(7, "Google1", "info");
 		ientrepriseservice.ajouterEntreprise(ent);
 		
 		assertEquals(nb+1, entrepriserepository.countent());
-	 }*/
-
-/*@Test
-		public void testajouterDepartment() {
-		int nb = departmentrepository.countcont() ;
-		Departement dep = new Departement(1, "Dev", 1);
-		idepartementservice.ajouterDepartement(dep);
-		
-		assertEquals(nb+1, departementrepository.countdep());
-	 }*/
-
-/*@Test
-	
-		public void testdeleteEntrepriseById() {
-		int nb = entrepriserepository.countent() ;
-		ientrepriseservice.deleteEntrepriseById(7);
-		
-		assertEquals(nb-1, entrepriserepository.countent());
-	 }*/
-
-/*@Test
-	
-		public void testdeleteDepartementById() {
-		int nb = departementrepository.countdep() ;
-		idepartementservice.deletedepartementById(7);
-		
-		assertEquals(nb-1, departementrepository.countdep());
-	 }*/	
-
-/* @Test
-		public void testaffecterDepartementAEntreprise() {
-			ientrepriseservice.affecterDepartementAEntreprise(1,1);
-			Entreprise ent = entrepriserepository.findById(1).get();
-			Departement dep = deptRepoistory.findById(1).get();
-			
-			int id = ent.getDepartements().get(0).getId();
-			assertEquals(1,id);
-				} 
+	 }
 */
 /*
 @Test
-	public void getAllDepartementByEntreprise() {
+		public void testajouterDepartment() {
+		int nb = departementrepository.countdep() ;
+		Departement dep = new Departement(1, "Dev");
+		ientrepriseservice.ajouterDepartement(dep);
 		
-				Entreprise E = entrepriserepository.findById(1).get();
-				List<Departement> L = E.getDepartements();
-				String name = L.get(0).getName();
-				assertEquals("a", name);
-			}
-	
+		assertEquals(nb+1, departementrepository.countdep());
+	 }
 */
- /*****************************fin partie Ghassen***************************************/
+@Test
+	
+public void testdeleteEntrepriseById() {
+int nb = entrepriserepository.countent() ;
+ientrepriseservice.deleteEntrepriseById(2);
+
+assertEquals(nb-1, entrepriserepository.countent());
+}
+
+/*@Test
+
+public void testdeleteDepartementById() {
+int nb = departementrepository.countdep() ;
+idepartementservice.deletedepartementById(2);
+
+assertEquals(nb-1, departementrepository.countdep());
+}*/	
+
+/* @Test
+public void testaffecterDepartementAEntreprise() {
+	ientrepriseservice.affecterDepartementAEntreprise(1,1);
+	Entreprise ent = entrepriserepository.findById(1).get();
+	Departement dep = deptRepoistory.findById(1).get();
+	
+	int id = ent.getDepartements().get(0).getId();
+	assertEquals(1,id);
+		} 
+*/
+/*
+@Test
+public void getAllDepartementByEntreprise() {
+
+		Entreprise E = entrepriserepository.findById(1).get();
+		List<Departement> L = E.getDepartements();
+		String name = L.get(0).getName();
+		assertEquals("a", name);
+	}
+
+*/
+/*****************************fin partie Ghassen***************************************/
 }
