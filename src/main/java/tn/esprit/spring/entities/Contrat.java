@@ -37,6 +37,11 @@ public class Contrat implements Serializable {
 		super();
 	}
 	
+	
+	
+
+
+
 	public Contrat(Date dateDebut, String typeContrat, float salaire) {
 		this.dateDebut = dateDebut;
 		this.typeContrat = typeContrat;
@@ -97,6 +102,19 @@ public class Contrat implements Serializable {
 	public void setTelephone(float telephone) {
 		this.telephone = telephone;
 	}
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Contrat [reference=" + reference + ", dateDebut=" + dateDebut + ", typeContrat=" + typeContrat
+				+ ", telephone=" + telephone + ", employe=" + employe + ", salaire=" + salaire + "]";
+	}
+	
+	
 	
 	
 	

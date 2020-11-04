@@ -117,7 +117,6 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	public int ajouterContrat(Contrat contrat) {
 		l.info("ajouterContrat loading...");
-
 		contratRepoistory.save(contrat);
 		return contrat.getReference();
 	}

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,8 @@ import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.repository.MissionRepository;
+import tn.esprit.spring.services.ContratServiceImpl;
+import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.services.IEmployeService;
 
 @RunWith(SpringRunner.class)
@@ -42,15 +45,14 @@ public class TimesheetApplicationTests {
 	EmployeRepository employerepository;
 	@Autowired
 	MissionRepository missionrepository;
-
 	@Autowired
 	ContratRepository contratrepository;
-
 	@Autowired
 	EntrepriseRepository entrepriserepository;
-
 	@Autowired
 	DepartementRepository deptRepoistory;
+	@Autowired
+	IContratService contratService;
 
 	public static Date parseDate(String date) {
 		try {
@@ -229,12 +231,49 @@ public class TimesheetApplicationTests {
 
 	Employe employe = new Employe(1, "oussema", "saadouli");
 	Departement departement = new Departement(1, "Atlas");
+	Contrat contrat = new Contrat(23181323, "CDI", 1200.0f);
 
 	@Before
 	public void init() {
 		deptRepoistory.save(departement);
 		employerepository.save(employe);
+		List<Contrat> list = contratService.getAllContrats();
+		assertEquals(true, list.isEmpty());
 	}
+
+	@Test
+	public void testingAddContrat() {
+		int nbr = (int) contratrepository.count();
+		int contratReference = contratService.addContrat(contrat);
+		assertNotNull(contratReference);
+		assertEquals(nbr + 1, contratrepository.count());
+	}
+
+	@Test
+	public void testingFindByContrat() {
+		int contratReference = contratService.addContrat(contrat);
+		Contrat contrat = contratrepository.findById(contratReference).get();
+		assertEquals(contratReference, contrat.getReference());
+	}
+
+	@Test
+	public void testingGetAllContrats() {
+		List<Contrat> list = contratService.getAllContrats();
+		assertEquals(true, list.isEmpty());
+	}
+
+	@Test
+	public void testingAffecterContratAEmploye() {
+		int contratRef = contratService.addContrat(contrat);
+		contratService.affecterContratAEmploye(contratRef, 1);
+		assertEquals(1, contratrepository.findById(contratRef).get().getEmploye().getId());
+	}
+
+	// @Test
+	// public void testingDeleteAllContratJPQL() {
+	// iemployeservice.deleteAllContratJPQL();
+	// assertEquals(true, iemployeservice.deleteAllContratJPQL());
+	// }
 
 	@Test
 	public void testingAffecterEmployeADepartement() {
@@ -248,39 +287,9 @@ public class TimesheetApplicationTests {
 		assertEquals(true, iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
 	}
 
-	// @After
-	// public void destroy() {
-	// iemployeservice.desaffecterEmployeDuDepartement(8,1);
-	// assertEquals(true,iemployeservice.getAllEmployeByDepartement(departement).isEmpty());
-	// }
-
-	@Test
-	public void testingAddContrat() {
-		int nbr = (int) contratrepository.count();
-		Contrat c = new Contrat(23181323, "CDO", 1000.0f);
-		iemployeservice.ajouterContrat(c);
-
-		assertEquals(nbr + 1, contratrepository.count());
-	}
-
-	@Test
-	public void testingDeleteAllContratJPQL() {
+	@After
+	public void destroy() {
 		iemployeservice.deleteAllContratJPQL();
-		assertEquals(true, iemployeservice.deleteAllContratJPQL());
-	}
-
-	@Test
-	public void testingDeleteContratById() {
-		Contrat c = new Contrat(1, "typ1", 2);
-		iemployeservice.ajouterContrat(c);
-		iemployeservice.deleteContratById(c.getReference());
-		// assertNull(employerepository.findById(c.getReference()));
-		assertEquals(Optional.empty(), employerepository.findById(c.getReference()));
-	}
-
-	@Test
-	public void testingGetAllEmployes() {
-		iemployeservice.getAllEmployes();
 		assertEquals(true, iemployeservice.deleteAllContratJPQL());
 	}
 
