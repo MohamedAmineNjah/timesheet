@@ -247,11 +247,11 @@ public class TimesheetApplicationTests {
 	
 	 /*****************************fin partie Njah***************************************/
 	 /*****************************début partie Ghassen***************************************/
-	/* 
+	/*
  @Test
 		public void testajouterEntreprise() {
 		int nb = entrepriserepository.countent() ;
-		Entreprise ent = new Entreprise(7, "Google1", "info");
+		Entreprise ent = new Entreprise(7, "Google111", "info");
 		ientrepriseservice.ajouterEntreprise(ent);
 		
 		assertEquals(nb+1, entrepriserepository.countent());
@@ -261,12 +261,14 @@ public class TimesheetApplicationTests {
 @Test
 		public void testajouterDepartment() {
 		int nb = departementrepository.countdep() ;
-		Departement dep = new Departement(1, "Dev");
+		Entreprise ent = ientrepriseservice.getEntrepriseById(1);
+		Departement dep = new Departement(5, "Dev", ent);
 		ientrepriseservice.ajouterDepartement(dep);
 		
 		assertEquals(nb+1, departementrepository.countdep());
 	 }
 */
+/*
 @Test
 	
 		public void testdeleteEntrepriseById() {
@@ -275,7 +277,7 @@ public class TimesheetApplicationTests {
 		
 		assertEquals(nb-1, entrepriserepository.countent());
 	 }
-
+*/
 /*@Test
 	
 		public void testdeleteDepartementById() {
@@ -284,8 +286,8 @@ public class TimesheetApplicationTests {
 		
 		assertEquals(nb-1, departementrepository.countdep());
 	 }*/	
-
-/* @Test
+/*
+ @Test
 		public void testaffecterDepartementAEntreprise() {
 			ientrepriseservice.affecterDepartementAEntreprise(1,1);
 			Entreprise ent = entrepriserepository.findById(1).get();
@@ -302,7 +304,7 @@ public class TimesheetApplicationTests {
 				Entreprise E = entrepriserepository.findById(1).get();
 				List<Departement> L = E.getDepartements();
 				String name = L.get(0).getName();
-				assertEquals("a", name);
+				assertEquals("Dev", name);
 			}
 	
 */
