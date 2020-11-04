@@ -45,6 +45,10 @@ public class TimesheetApplicationTests {
 	
 	@Autowired
 	EmployeRepository employerepository;
+
+	@Autowired
+	DepartementRepository departementrepository;
+
 	@Autowired
 	MissionRepository missionrepository;
 	
@@ -127,7 +131,7 @@ public class TimesheetApplicationTests {
 			}
 	*/
 	
-	
+	/*
 	 public static Date parseDate(String date) {
 	     try {
 	         return new SimpleDateFormat("yyyy-MM-dd").parse(date);
@@ -135,7 +139,7 @@ public class TimesheetApplicationTests {
 	         return null;
 	     }
 	  }
-	  
+	  */
 	/*
 	 @Test
 		public void deleteAllContratJPQL() {
@@ -243,38 +247,40 @@ public class TimesheetApplicationTests {
 	
 	 /*****************************fin partie Njah***************************************/
 	 /*****************************début partie Ghassen***************************************/
- /*@Test
+	/* 
+ @Test
 		public void testajouterEntreprise() {
-		int nb = entrepriserepository.countcont() ;
-		Entreprise ent = new Entreprise(1, "Google", "info");
+		int nb = entrepriserepository.countent() ;
+		Entreprise ent = new Entreprise(7, "Google1", "info");
 		ientrepriseservice.ajouterEntreprise(ent);
 		
 		assertEquals(nb+1, entrepriserepository.countent());
-	 }*/
-
-/*@Test
+	 }
+*/
+/*
+@Test
 		public void testajouterDepartment() {
-		int nb = departmentrepository.countcont() ;
-		Departement dep = new Departement(1, "Dev", 1);
-		idepartementservice.ajouterDepartement(dep);
+		int nb = departementrepository.countdep() ;
+		Departement dep = new Departement(1, "Dev");
+		ientrepriseservice.ajouterDepartement(dep);
 		
 		assertEquals(nb+1, departementrepository.countdep());
-	 }*/
-
-/*@Test
+	 }
+*/
+@Test
 	
 		public void testdeleteEntrepriseById() {
 		int nb = entrepriserepository.countent() ;
-		ientrepriseservice.deleteEntrepriseById(7);
+		ientrepriseservice.deleteEntrepriseById(2);
 		
 		assertEquals(nb-1, entrepriserepository.countent());
-	 }*/
+	 }
 
 /*@Test
 	
 		public void testdeleteDepartementById() {
 		int nb = departementrepository.countdep() ;
-		idepartementservice.deletedepartementById(7);
+		idepartementservice.deletedepartementById(2);
 		
 		assertEquals(nb-1, departementrepository.countdep());
 	 }*/	
