@@ -64,105 +64,84 @@ public class TimesheetApplicationTests {
 		}
 	}
 
-	
-	 /** début partie dorra **/
-	 
+	/** début partie dorra **/
+
 	/*
-	  @Test public void contextLoads() { }
-	 
-
-	 @Test
-	 public void deleteContratById() {
-	
-	 Contrat c = new Contrat(1, "typ1", 2);
-	 iemployeservice.ajouterContrat(c);
-	 iemployeservice.deleteContratById(c.getReference());
-	 assertNull(employerepository.findById(c.getReference()));
-	 }
-	
-	 @Test
-	 public void getNombreEmployeJPQL() {
-	
-	 Employe e1 = new Employe("salah", "salah", "s.s@gmail.tn", true,
-	 Role.INGENIEUR);
-	 Employe e2 = new Employe("mohamed", "mohamed", "m.m@gmail.tn", true,
-	 Role.ADMINISTRATEUR);
-	 iemployeservice.addOrUpdateEmploye(e1);
-	 iemployeservice.addOrUpdateEmploye(e2);
-	 int nbr = iemployeservice.getNombreEmployeJPQL();
-	 assertEquals(3, nbr);
-	 }
-	
-	 @Test
-	 public void getAllEmployeNamesJPQL() {
-	
-	List<String> L = iemployeservice.getAllEmployeNamesJPQL();
-	List<String> LT = new ArrayList<>() ;
-	LT.add("dorra");
-	LT.add("salah");
-	LT.add("mohamed");
-	 assertEquals(LT, L);
-	 }
-
-	
-	  @Test 
-	  public void getAllEmployes() {
-	  
-	  List<Employe> L = iemployeservice.getAllEmployes();
-	  
-	  assertEquals(3, L.size()); }
-	 
-
-	  
-	  @Test 
-	  public void getAllEmployeByEntreprise() {
-	  
-	  Entreprise E = entrepriserepository.findById(1).get();
-	  List<Employe> L = iemployeservice.getAllEmployeByEntreprise(E);
-	  String name = L.get(0).getNom();
-	  assertEquals("dorra", name); 
-	  }
-	 
-	
-	  @Test 
-	  public void mettreAjourEmailByEmployeIdJPQL() {
-	  
-	  
-	  int id = employerepository.findById(1).get().getId();
-	  iemployeservice.mettreAjourEmailByEmployeIdJPQL("new.new@gmail.tn", id);
-	  
-	  assertEquals("new.new@gmail.tn",employerepository.findById(1).get().getEmail()); }
-	 
-	  
-	
-	@Test 
-	public void getSalaireByEmployeIdJPQL() {
-	
-	float s = iemployeservice.getSalaireByEmployeIdJPQL(employerepository.findById(1).get().getId()) ;
-	assertEquals(200.0, s, 0);
-	 }
-
-	 @Test 
-	 public void getTimesheetsByMissionAndDate() {
-	
-	 Employe e = employerepository.findById(1).get();
-	 Mission m = missionrepository.findById(1).get();
-	 Date dateDebut =parseDate("2010-01-01");
-	 Date dateFin = parseDate("2025-01-01");
-	
-	 List<Timesheet> t = iemployeservice.getTimesheetsByMissionAndDate(e, m,dateDebut, dateFin) ;
-	 assertNotNull(t);
-	
-	 }
+	 * @Test public void contextLoads() { }
+	 * 
+	 * 
+	 * @Test public void deleteContratById() {
+	 * 
+	 * Contrat c = new Contrat(1, "typ1", 2); iemployeservice.ajouterContrat(c);
+	 * iemployeservice.deleteContratById(c.getReference());
+	 * assertNull(employerepository.findById(c.getReference())); }
+	 * 
+	 * @Test public void getNombreEmployeJPQL() {
+	 * 
+	 * Employe e1 = new Employe("salah", "salah", "s.s@gmail.tn", true,
+	 * Role.INGENIEUR); Employe e2 = new Employe("mohamed", "mohamed",
+	 * "m.m@gmail.tn", true, Role.ADMINISTRATEUR);
+	 * iemployeservice.addOrUpdateEmploye(e1);
+	 * iemployeservice.addOrUpdateEmploye(e2); int nbr =
+	 * iemployeservice.getNombreEmployeJPQL(); assertEquals(3, nbr); }
+	 * 
+	 * @Test public void getAllEmployeNamesJPQL() {
+	 * 
+	 * List<String> L = iemployeservice.getAllEmployeNamesJPQL(); List<String> LT =
+	 * new ArrayList<>() ; LT.add("dorra"); LT.add("salah"); LT.add("mohamed");
+	 * assertEquals(LT, L); }
+	 * 
+	 * 
+	 * @Test public void getAllEmployes() {
+	 * 
+	 * List<Employe> L = iemployeservice.getAllEmployes();
+	 * 
+	 * assertEquals(3, L.size()); }
+	 * 
+	 * 
+	 * 
+	 * @Test public void getAllEmployeByEntreprise() {
+	 * 
+	 * Entreprise E = entrepriserepository.findById(1).get(); List<Employe> L =
+	 * iemployeservice.getAllEmployeByEntreprise(E); String name =
+	 * L.get(0).getNom(); assertEquals("dorra", name); }
+	 * 
+	 * 
+	 * @Test public void mettreAjourEmailByEmployeIdJPQL() {
+	 * 
+	 * 
+	 * int id = employerepository.findById(1).get().getId();
+	 * iemployeservice.mettreAjourEmailByEmployeIdJPQL("new.new@gmail.tn", id);
+	 * 
+	 * assertEquals("new.new@gmail.tn",employerepository.findById(1).get().getEmail(
+	 * )); }
+	 * 
+	 * 
+	 * 
+	 * @Test public void getSalaireByEmployeIdJPQL() {
+	 * 
+	 * float s =
+	 * iemployeservice.getSalaireByEmployeIdJPQL(employerepository.findById(1).get()
+	 * .getId()) ; assertEquals(200.0, s, 0); }
+	 * 
+	 * @Test public void getTimesheetsByMissionAndDate() {
+	 * 
+	 * Employe e = employerepository.findById(1).get(); Mission m =
+	 * missionrepository.findById(1).get(); Date dateDebut =parseDate("2010-01-01");
+	 * Date dateFin = parseDate("2025-01-01");
+	 * 
+	 * List<Timesheet> t = iemployeservice.getTimesheetsByMissionAndDate(e,
+	 * m,dateDebut, dateFin) ; assertNotNull(t);
+	 * 
+	 * }
 	 */
-	/* @Test 
-	  public void deleteAllContratJPQL() {
-	  
-	  iemployeservice.deleteAllContratJPQL() ;
-	  assertNull(contratrepository.findAll() );
-	  }
-	*/
-	/**  fin partie dorra **/
+	/*
+	 * @Test public void deleteAllContratJPQL() {
+	 * 
+	 * iemployeservice.deleteAllContratJPQL() ;
+	 * assertNull(contratrepository.findAll() ); }
+	 */
+	/** fin partie dorra **/
 
 	/*****************************
 	 * début partie Njah
@@ -302,67 +281,58 @@ public class TimesheetApplicationTests {
 	/*****************************
 	 * fin partie Saadouli
 	 ***************************************/
-  /*****************************début partie Ghassen***************************************/
+	/*****************************
+	 * début partie Ghassen
+	 ***************************************/
 	/*
- @Test
-		public void testajouterEntreprise() {
-		int nb = entrepriserepository.countent() ;
-		Entreprise ent = new Entreprise(7, "Google111", "info");
-		ientrepriseservice.ajouterEntreprise(ent);
-		
-		assertEquals(nb+1, entrepriserepository.countent());
-	 }
-*/
-/*
-@Test
-		public void testajouterDepartment() {
-		int nb = departementrepository.countdep() ;
-		Entreprise ent = ientrepriseservice.getEntrepriseById(1);
-		Departement dep = new Departement(5, "Dev", ent);
-		ientrepriseservice.ajouterDepartement(dep);
-		
-		assertEquals(nb+1, departementrepository.countdep());
-	 }
-*/
-/*
-@Test
-	
-		public void testdeleteEntrepriseById() {
-		int nb = entrepriserepository.countent() ;
-		ientrepriseservice.deleteEntrepriseById(2);
-		
-		assertEquals(nb-1, entrepriserepository.countent());
-	 }
-*/
-/*@Test
-	
-		public void testdeleteDepartementById() {
-		int nb = departementrepository.countdep() ;
-		idepartementservice.deletedepartementById(2);
-		
-		assertEquals(nb-1, departementrepository.countdep());
-	 }*/	
-/*
- @Test
-		public void testaffecterDepartementAEntreprise() {
-			ientrepriseservice.affecterDepartementAEntreprise(1,1);
-			Entreprise ent = entrepriserepository.findById(1).get();
-			Departement dep = deptRepoistory.findById(1).get();
-			
-			int id = ent.getDepartements().get(0).getId();
-			assertEquals(1,id);
-				} 
-*/
-/*
-@Test
-	public void getAllDepartementByEntreprise() {
-		
-				Entreprise E = entrepriserepository.findById(1).get();
-				List<Departement> L = E.getDepartements();
-				String name = L.get(0).getName();
-				assertEquals("Dev", name);
-			}
-	
-*/
- /*****************************fin partie Ghassen***************************************/
+	 * @Test public void testajouterEntreprise() { int nb =
+	 * entrepriserepository.countent() ; Entreprise ent = new Entreprise(7,
+	 * "Google111", "info"); ientrepriseservice.ajouterEntreprise(ent);
+	 * 
+	 * assertEquals(nb+1, entrepriserepository.countent()); }
+	 */
+	/*
+	 * @Test public void testajouterDepartment() { int nb =
+	 * departementrepository.countdep() ; Entreprise ent =
+	 * ientrepriseservice.getEntrepriseById(1); Departement dep = new Departement(5,
+	 * "Dev", ent); ientrepriseservice.ajouterDepartement(dep);
+	 * 
+	 * assertEquals(nb+1, departementrepository.countdep()); }
+	 */
+	/*
+	 * @Test
+	 * 
+	 * public void testdeleteEntrepriseById() { int nb =
+	 * entrepriserepository.countent() ; ientrepriseservice.deleteEntrepriseById(2);
+	 * 
+	 * assertEquals(nb-1, entrepriserepository.countent()); }
+	 */
+	/*
+	 * @Test
+	 * 
+	 * public void testdeleteDepartementById() { int nb =
+	 * departementrepository.countdep() ;
+	 * idepartementservice.deletedepartementById(2);
+	 * 
+	 * assertEquals(nb-1, departementrepository.countdep()); }
+	 */
+	/*
+	 * @Test public void testaffecterDepartementAEntreprise() {
+	 * ientrepriseservice.affecterDepartementAEntreprise(1,1); Entreprise ent =
+	 * entrepriserepository.findById(1).get(); Departement dep =
+	 * deptRepoistory.findById(1).get();
+	 * 
+	 * int id = ent.getDepartements().get(0).getId(); assertEquals(1,id); }
+	 */
+	/*
+	 * @Test public void getAllDepartementByEntreprise() {
+	 * 
+	 * Entreprise E = entrepriserepository.findById(1).get(); List<Departement> L =
+	 * E.getDepartements(); String name = L.get(0).getName(); assertEquals("Dev",
+	 * name); }
+	 * 
+	 */
+	/*****************************
+	 * fin partie Ghassen
+	 ***************************************/
 }
