@@ -43,7 +43,6 @@ public class TimesheetTwoServiceImplTest {
 	public void testValiderTimesheet() {
 		Timesheet timesheet =timesheetRepository.findByMission(missionRepository.findById(1002).get());
 		assertTrue(timesheet.isValide());
-		
 	}
 	
 	@Test
