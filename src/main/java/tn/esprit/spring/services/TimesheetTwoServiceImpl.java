@@ -60,9 +60,9 @@ public class TimesheetTwoServiceImpl implements ITimesheetTwoService {
 			l.error("l'employe doit etre chef de departement de la mission en question");
 			return;
 		}
-//
+
 		l.debug("Création Timesheet");		
-		Timesheet timesheet =timesheetRepository.findByMission(missionRepository.findById(missionId).get());
+		Timesheet timesheet =timesheetRepository.findByMission(mission.get());
 		l.info("Validation Timesheet");
 		timesheet.setValide(true);
 		timesheetRepository.save(timesheet);
