@@ -37,6 +37,7 @@ public class TimesheetTwoServiceImplTest {
 	public void testFindByMission() {
 		Timesheet timesheet = timesheetRepository.findByMission(missionRepository.findById(1002).get());
 		assertEquals(1002, timesheet.getMission().getId());
+		
 	}
 	
 	@Test
