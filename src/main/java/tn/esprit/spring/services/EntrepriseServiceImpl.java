@@ -16,7 +16,7 @@ import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 
 /*Ghassen*/
-/*Ghassen*/
+/*Ghassen Belhouchet*/
 /*BelhouchetGhassenppp*/
 @Service
 public class EntrepriseServiceImpl implements IEntrepriseService {
